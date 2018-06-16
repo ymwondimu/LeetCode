@@ -24,7 +24,7 @@ def addTwoNumbers(l1, l2):
     carry = 0
 
     #While we have not reached end of either list, continue
-    while ((p1 != None) and (p2 != None)):
+    while ((p1 != None) or (p2 != None)):
         #set two values to be summed from list if available, otherwise 0
         sum1 = p1.val if p1 != None else 0
         sum2 = p2.val if p2 != None else 0
@@ -41,8 +41,10 @@ def addTwoNumbers(l1, l2):
         current = current.next
 
         #move the linked list for the numbers to be added over for the next digit sums
-        p1 = p1.next
-        p2 = p2.next
+        if p1 != None:
+            p1 = p1.next
+        if p2 != None:
+            p2 = p2.next
 
     #if there is a remaining carry value, tack it on
     if carry == 1:
