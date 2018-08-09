@@ -12,3 +12,10 @@ def in_order(root, res):
         in_order(root.left)
         res.append(root.value)
         in_order(root.right)
+
+def scale(data, factor):
+    for val in data:
+        val *= factor
+    print (data)
+
+scale([1,2,3], 2)
