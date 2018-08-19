@@ -18,16 +18,12 @@ class Solution(object):
             return False
 
         by_one = head
-        by_two = head.next.next
+        by_two = head.next
 
-        while (by_one and by_two):
-            if by_one.val == by_two.val:
+        while (True):
+            if by_two == None or by_two.next == None:
+                return False
+            if by_two == by_one or by_two.next == by_one:
                 return True
-            else:
-                if not by_two.next:
-                    return False
-                else:
-                    by_one = by_one.next
-                    by_two = by_two.next.next
-
-        return False
+            by_one = by_one.next
+            by_two = by_two.next.next
