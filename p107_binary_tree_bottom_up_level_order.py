@@ -4,28 +4,30 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
+
 from collections import deque
 
 
 class Solution(object):
-    def levelOrder(self, root):
+    def levelOrderBottom(self, root):
         """
         :type root: TreeNode
         :rtype: List[List[int]]
         """
 
-        q, result = deque(), []
+        q, res = deque(), []
         if root:
             q.append(root)
-        while len(q):
+
+        while len(q) > 0:
             level = []
             for _ in range(len(q)):
-                x = q.popleft()
-                level.append(x.val)
-                if x.left:
-                    q.append(x.left)
-                if x.right:
-                    q.append(x.right)
-            result.append(level)
+                node = q.popleft()
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(level)
 
-        return result
+        return res[::-1]
